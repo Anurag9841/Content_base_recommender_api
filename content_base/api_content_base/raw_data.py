@@ -32,6 +32,16 @@ def retrive_data(table_name: str):
         if course_list.objects.all().exists():
             course_list.objects.all().delete()
         course_list.objects.bulk_create(model_instance)
+    elif table_name == 'tag':
+        path = 'C:/Users/acer/PycharmProjects/Content_Based_Recommendation/content_base/data/tag_Oct19.pkl'
+        df = pd.read_pickle(path)
+        model_instance = [tag(id = df_row['id'],
+                              tag_name = df_row['tag_name'],
+                              created_at = df_row['created_at'],
+                              updated_at = df_row['updated_at'])for df_row in df.to_dict(orient = 'records')]
+        if tag.objects.all().exists():
+            tag.objects.all().delete()
+        tag.objects.bulk_create(model_instance)
     else:
         return {"status": "invalid table name."}
 

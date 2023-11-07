@@ -18,11 +18,17 @@ class course_list(models.Model):
     Center_Code = models.IntegerField(null=True,blank=True)
     tag = models.CharField(max_length=100, blank= True,null=True)
 
+    def __str__(self):
+        return self.id
+
 class tag(models.Model):
     id = models.IntegerField(primary_key=True)
     tag_name = models.CharField(max_length=100, blank= True,null=True)
     created_at = models.CharField(max_length=100, blank= True,null=True)
     updated_at = models.CharField(max_length=100, blank= True,null=True)
+
+    def __str__(self):
+        return self.id
 
 
 

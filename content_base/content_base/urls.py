@@ -21,5 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('api_content_base.urls')),
     path('data_retrival/<slug:table_name>',include('api_content_base.urls')),
-    path('data_show/<str:table_name>',include('api_content_base.urls'))
+    path('data_show/<str:table_name>',include('api_content_base.urls')),
+    path('preprocess_data/<str:table_name>',include('api_content_base.urls')),
+    path('preprocess_data_show/<str:table_name>',include('api_content_base.urls'))
 ]
+

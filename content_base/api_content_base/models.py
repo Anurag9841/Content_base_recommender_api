@@ -18,7 +18,7 @@ class course_list(models.Model):
     Center_Code = models.IntegerField(null=True,blank=True)
     tag = models.CharField(max_length=100, blank= True,null=True)
 
-    def __str__(self):
+    def __int__(self):
         return self.id
 
 class tag(models.Model):
@@ -27,8 +27,19 @@ class tag(models.Model):
     created_at = models.CharField(max_length=100, blank= True,null=True)
     updated_at = models.CharField(max_length=100, blank= True,null=True)
 
-    def __str__(self):
+    def __int__(self):
         return self.id
+
+class preprocessedtag(models.Model):
+    id = models.IntegerField(primary_key=True)
+    tag_name = models.CharField(max_length=100,blank=True,null=True)
+
+class preprocessedcourse(models.Model):
+    id = models.IntegerField(primary_key=True)
+    Course_Name = models.CharField(max_length=100, blank=True, null=True)
+    Center_Code = models.IntegerField(null=True,blank=True)
+    tag = models.CharField(max_length=100, blank= True,null=True)
+
 
 
 

@@ -9,6 +9,7 @@ from .models import tag,preprocessedcourse
 # Create your views here.
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .Add_Fuct import cosine_indices_maker
 @api_view(['GET'])
 def data_retrival(request,table_name):
     status = retrive_data(table_name)
@@ -38,3 +39,8 @@ def data_show_preprocessed(request,table_name):
         return Response(serializer.data)
     else:
         return Response(status.HTTP_400_BAD_REQUEST)
+
+def cosine_sim_indices_maker(request):
+    status = cosine_indices_maker()
+    return HttpResponse(json.dumps(status))
+

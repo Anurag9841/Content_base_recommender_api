@@ -13,8 +13,21 @@ from googletrans import Translator
 from .models import tag,preprocessedtag,course_list,preprocessedcourse
 import warnings
 warnings.filterwarnings("ignore")
+import ast
 def content_based_pipeline(course_list ,Tag):
   course_list = course_list[["id","Course_Name","tag",'Center_Code']]
+
+  def parse_list(input_str):
+      return ast.literal_eval(input_str)
+
+  # Apply the function to the specified column using apply
+  course_list['tag'] = course_list['tag'] .apply(lambda x: parse_list(x))
+  def convert_to_int(lst):
+    if len(lst) != 0 and lst !='[':
+        return [int(i) for i in lst]
+    else:
+        return ''
+  course_list['tag'] = course_list['tag'].apply(convert_to_int)
   Tag = Tag[["id","tag_name"]]
   Tag['tag_name'] = Tag['tag_name'].apply(str.lower)
   stemmer = PorterStemmer()
@@ -26,7 +39,7 @@ def content_based_pipeline(course_list ,Tag):
   Tag['tag_name'] = [i for i in tags_stem]
 
   def mapping(list):
-    if list!=None:
+    if list!=None and len(list)!=0:
         return [Tag[Tag['id']==i]["tag_name"]for i in list]
     else:
         return ''

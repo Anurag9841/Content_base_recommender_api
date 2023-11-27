@@ -24,6 +24,8 @@ urlpatterns = [
     path('data_show/<str:table_name>',include('api_content_base.urls')),
     path('preprocess_data/<str:table_name>',include('api_content_base.urls')),
     path('preprocess_data_show/<str:table_name>',include('api_content_base.urls')),
-    path('cosine_indices',include('api_content_base.urls'))
+    path('cosine_indices',include('api_content_base.urls')),
+    path('cosine_recommendation/<int:course_id>',include('api_content_base.urls'))
 ]
+
 

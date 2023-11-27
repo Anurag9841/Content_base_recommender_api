@@ -40,8 +40,4 @@ class preprocessedcourse(models.Model):
     Center_Code = models.IntegerField(null=True,blank=True)
     tag = models.CharField(max_length=100, blank= True,null=True)
 
-
-
-
-
 # Create your models here.

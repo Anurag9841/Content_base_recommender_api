@@ -13,7 +13,7 @@ def cosine_indices_maker(data = course_list_df):
     count = TfidfVectorizer()
     count_matrix = count.fit_transform(data['tag'])
     cosine_sim = cosine_similarity(count_matrix,count_matrix)
-    indices = pd.series(data.index,index = data['id'])
+    indices = pd.Series(data.index,index = data['id'])
     np.save('C:/Users/acer/PycharmProjects/Content_Based_Recommendation/content_base/data/cosine_sim.pkl',cosine_sim,allow_pickle=True, fix_imports=True)
     indices.to_pickle('C:/Users/acer/PycharmProjects/Content_Based_Recommendation/content_base/data/indices.pkl')
-    return {{'status':'Cosine_sim and indices_saved'}}
+    return {'status':'Cosine_sim and indices_saved'}

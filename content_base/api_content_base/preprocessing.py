@@ -122,6 +122,7 @@ def preprocess_pipeline(table_name:str):
         model_instance = [model(id = df_row['id'],
                                 Course_Name = df_row['Course_Name'],
                                 Center_Code = df_row['Center_Code'],
+
                                 tag = df_row['tag'])for df_row in df.to_dict(orient = 'records')]
         if model.objects.all().exists():
             model.objects.all().delete()
@@ -133,3 +134,4 @@ def preprocess_pipeline(table_name:str):
     return {"status": "preprocessed data updated."}
 
 
+# hello this is anurag

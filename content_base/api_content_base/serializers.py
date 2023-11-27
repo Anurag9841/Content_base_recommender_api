@@ -12,4 +12,5 @@ class preprocessedcourseSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
+class ContentBasedRecommendationSerializer(serializers.Serializer):
+    recommended_courses = serializers.ListField(child=serializers.CharField())

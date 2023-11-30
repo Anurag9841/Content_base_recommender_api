@@ -57,3 +57,6 @@ def content_reco(request, course_id):
     serializer.is_valid()
 
     return Response(serializer.data)
+
+def ui_recommendation(request):
+    return render(request, 'course_list.html')
